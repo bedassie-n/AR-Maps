@@ -6,3 +6,4 @@ app = Flask(__name__)
 
 # import the views for flask
 from app import views
+from app import sqlconnector
