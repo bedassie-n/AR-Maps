@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block css %}
+    <script src='https://aframe.io/releases/0.9.2/aframe.min.js'></script>
+    <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
+    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    <script>
+        THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
+    </script>
+{% endblock %}
+
+{% block main %}
+    <a-scene
+        vr-mode-ui="enabled: false"
+		embedded
+        arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
+
+        <a-camera gps-camera rotation-reader></a-camera>
+        <a-entity gltf-model="{{ url_for('static', filename='models/magnemite/scene.gltf') }}" rotation="0 180 0" scale="0.15 0.15 0.15" gps-entity-place="longitude: -76.904510; latitude: 17.954673;" animation-mixer/>
+	</a-scene>
+{% endblock %}
